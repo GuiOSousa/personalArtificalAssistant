@@ -60,3 +60,12 @@ Um modelo de local LLM também será necessário.
 O projeto utiliza o modelo"Meta-Llama-3-8B-Instruct.Q4_0", instalado separadamente na pasta `models` dentro da pasta `src`. O modelo pode ser baixado gratuitamente via GPT4All e inserido na pasta. Devido ao tamanho extenso do arquivo, ele não foi inserido no repositório.
 
 *Obs: Apesar do programa apontar os erros `Failed to load llamamodel-mainline-cuda-avxonly.dll: LoadLibraryExW failed with error 0x7e` e `Failed to load llamamodel-mainline-cuda.dll: LoadLibraryExW failed with error 0x7e` ao executar, ele funciona normalmente. A lentidão do processo será investidada nas próximas atualizações*
+
+## 7 - Versões
+### v0.1.0 (23/05/2025)
+- Primeira versão lançada.
+
+### v0.1.1 (25/05/2025)
+- Novos comandos (1)
+- Introdução de comandos com parâmetros.
+- Pequenas correções no tempo de espera da detecção de voz.
