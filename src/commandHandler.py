@@ -9,7 +9,9 @@ class CommandHandler:
     @staticmethod
     def getCommandList():
         commandList = [
-        "openGoogleChrome", "openNotepad"
+        "openGoogleChrome",
+        "openNotepad",
+        {"openGame": {"game": ["ultrakill", "subnautica"]}}
         ]
         return commandList
 
@@ -21,7 +23,14 @@ class CommandHandler:
                 self.commandExecuter.openNotepad()
             case "openGoogleChrome":
                 self.commandExecuter.openGoogleChrome()
-    
+        
+        if commandTitle.find("openGame") != -1:
+            args = commandTitle.split("(")[1]
+            args = args.split(")")[0]
+
+            self.commandExecuter.openGame(args)
+
+
     def executeStack(self, commands: list):
         for command in commands:
             self.execute(command)

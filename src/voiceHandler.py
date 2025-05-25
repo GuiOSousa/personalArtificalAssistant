@@ -22,6 +22,7 @@ class VoiceHandler:
     def captureAudio(self):
         with sr.Microphone(device_index=1) as source:
             recognizer = sr.Recognizer()
+            recognizer.pause_threshold = 1.5
             print("Ajustando para o ruído ambiente...")
             recognizer.adjust_for_ambient_noise(source, duration=1)
             print("O que você deseja?")
