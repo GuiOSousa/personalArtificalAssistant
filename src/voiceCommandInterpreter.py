@@ -9,7 +9,7 @@ class VoiceCommandInterpreter:
     commandHandler: CommandHandler = CommandHandler()
     
     def __init__(self):
-        commandHandler = CommandHandler()
+        pass
 
     def handleInstruction(self, instruction: str):
         with self.model:

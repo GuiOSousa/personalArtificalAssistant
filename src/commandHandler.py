@@ -11,7 +11,9 @@ class CommandHandler:
         commandList = [
         "openGoogleChrome",
         "openNotepad",
-        {"openGame": {"game": ["ultrakill", "subnautica"]}}
+        {"openGame": {"game": ["ultrakill", "subnautica"]}},
+        "turnOnLight",
+        "turnOffLight"
         ]
         return commandList
 
@@ -23,6 +25,10 @@ class CommandHandler:
                 self.commandExecuter.openNotepad()
             case "openGoogleChrome":
                 self.commandExecuter.openGoogleChrome()
+            case "turnOnLight":
+                self.commandExecuter.turnOnLight()
+            case "turnOffLight":
+                self.commandExecuter.turnOffLight()
         
         if commandTitle.find("openGame") != -1:
             args = commandTitle.split("(")[1]

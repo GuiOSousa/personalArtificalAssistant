@@ -17,7 +17,7 @@ class VoiceHandler:
             print(f"{index}: {name}")
 
     def getCurrentAudioSource(self):
-        pass
+        return 1
 
     def captureAudio(self):
         with sr.Microphone(device_index=1) as source:

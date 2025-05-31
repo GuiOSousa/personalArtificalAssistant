@@ -1,4 +1,5 @@
 import subprocess
+from src.modules.lightSystem import LightSystem
 
 class CommandExecuter:
     def __init__(self):
@@ -19,3 +20,11 @@ class CommandExecuter:
                 subprocess.Popen("C:\\Program Files (x86)\\Steam\\steamapps\\common\\ultrakill\\ultrakill.exe")
             case "subnautica":
                 subprocess.Popen("C:\Program Files (x86)\Steam\steamapps\common\Subnautica\Subnautica.exe")
+    
+    def turnOnLight(self):
+        l = LightSystem()
+        l.turnOnLight()
+    
+    def turnOffLight(self):
+        l = LightSystem()
+        l.turnOffLight()
