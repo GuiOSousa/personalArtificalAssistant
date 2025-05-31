@@ -39,8 +39,6 @@ class LanguageModel():
                 S: {{"Response": "Ultrakill aberto!", "Commands": ["openGame(ultrakill)"]}}
                 """
 
-                print(systemPrompt)
-
                 chat.generate(systemPrompt)
                 response = chat.generate(prompt)
                 
