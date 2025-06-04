@@ -20,7 +20,3 @@ class LightSystem:
     def turnOffLight(self):
         device = self.getDevice("BedroomLampshade")
         device.turn_off()
-
-l = LightSystem()
-l.turnOffLight()
-
