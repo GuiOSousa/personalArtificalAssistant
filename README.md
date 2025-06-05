@@ -3,7 +3,7 @@ O Assistente Pessoal Artifical (APA) é um assistente baseado em LLM com capacid
 
 Um dos principais objetivos do projeto (e a principal razão para o uso de uma LLM) é que esses comandos de voz possam ser completamente naturais. "Abrir Google Chrome" e "Por favor, você poderia abrir o google?" essencialmente requisitam, semanticamente, a mesma tarefa, apesar da diferença de sintaxe.
 
-Na versão atual (v0.1.2) o APA é capaz de *abrir programas* no computador e *ligar/desligar luzes*.
+Na versão atual (v0.2.0) o APA é capaz de *abrir programas* no computador, *ligar/desligar luzes* e *tocar músicas no Spotify*.
 
 *Importante*: Leia o tópico 6 sobre a execução do projeto.
 ## 1 - Comandos de Voz
@@ -52,6 +52,8 @@ Os exemplos contam com uma entrada (o que foi dito para o *VoiceHandler*) e a sa
 
 * "Acenda as luzes" -> R: "As luzes foram acessas!"; C: ["turnOnLight"]
 
+* "Tocar Smells Like Teen Spirit" -> R: "Tocando Smells Like Teen Spirit"; C: ["playSong(Smells Like Teen Spirit)"]
+
 ## 6 - Execução
 As bibliotecas necessárias estão disponíveis no arquivo requirements.txt. Para instalá-las, execute o comando:
 
@@ -65,13 +67,16 @@ O projeto utiliza o modelo"Meta-Llama-3-8B-Instruct.Q4_0", instalado separadamen
 
 Lâmpadas requerem configurção adicional. Neste projeto, uma lâmpada RGB compatível com Tuya foi usada.
 
+A Intergração com Spotify exige uma conta Premium e credenciais válidas de API.
+
 ## 7 - Lista de Comandos
 - openNotepad() - Abre o bloco de notas
 - openGoogleChrome() - Abre o Google
 - openGame(gameName) - Abre um jogo na Steam, dentre as opções disponíveis.
 - turnOnLight() - Liga a lâmpada configurada
 - turnOffLight() - Desliga a lâmpada configurada
-
+- playSong(songTitle) - Toca a música passada no Spotify
+- addSongToQueue(songTitle) - Adiciona a música passada na fila do Spotify
 
 ## 8 - Versões
 ### v0.1.0 (23/05/2025)
@@ -85,3 +90,9 @@ Lâmpadas requerem configurção adicional. Neste projeto, uma lâmpada RGB comp
 ### v0.1.2 (31/05/2025)
 - Novos comandos (2)
 - Interação com dispositivos Tuya (lâmpada RGB)
+
+### v0.2.0 (05/06/2025)
+- Novos comandos (2)
+- Introdução de comandos com argumentos dinâmicos.
+- Contexto Ativo: O programa aceita várias entradas em sequência sem precisar ser reiniciado.
+- Integração com Spotify

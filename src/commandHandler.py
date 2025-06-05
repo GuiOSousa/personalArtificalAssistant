@@ -13,7 +13,9 @@ class CommandHandler:
         "openNotepad",
         {"openGame": {"game": ["ultrakill", "subnautica"]}},
         "turnOnLight",
-        "turnOffLight"
+        "turnOffLight",
+        {"playSong": {"songTitle": "DYNAMIC"}},
+        {"addSongToQueue": {"songTitle": "DYNAMIC"}}
         ]
         return commandList
 
@@ -35,7 +37,20 @@ class CommandHandler:
             args = args.split(")")[0]
 
             self.commandExecuter.openGame(args)
+        
+        elif self.isCommand(commandTitle, "playSong"):
+            self.commandExecuter.playSong(self.getCommandArgs(commandTitle))
+        
+        elif self.isCommand(commandTitle, "addSongToQueue"):
+            self.commandExecuter.addSongToQueue(self.getCommandArgs(commandTitle))
 
+    def isCommand(self, string: str, target: str):
+        return string.find(target) != -1
+
+    def getCommandArgs(self, command: str):
+        args = command.split("(")[1]
+        args = args.split(")")[0]
+        return args
 
     def executeStack(self, commands: list):
         for command in commands:
