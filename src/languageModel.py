@@ -11,13 +11,12 @@ class LanguageModel():
         return
 
     def __init__(self):
-        pass
-
-    def handleInstructions(self, prompt: str) -> str:
-         with self.model:
-            with self.model.chat_session() as chat:
-                commands = str(CommandHandler.getCommandList())
-                systemPrompt = f"""
+        self.model = GPT4All("Meta-Llama-3-8B-Instruct.Q4_0.gguf", model_path="src/models", allow_download=False)
+        self.chat = self.model.chat_session()
+        self.chat_model = self.chat.__enter__()
+        
+        commands = str(CommandHandler.getCommandList())
+        systemPrompt = f"""
                 Siga a risca o prompt a seguir.
                 Para meus próximos prompts, vou te enviar uma entrada textual, pedindo ou perguntando algo. Quero que você me retorne a resposta em forma de dicionário, com os atributos "Response" e "Commands" (use aspas duplas).
                 Response é uma possível resposta textual para o prompt.
@@ -38,10 +37,8 @@ class LanguageModel():
                 E: Quero jogar ultrakill
                 S: {{"Response": "Ultrakill aberto!", "Commands": ["openGame(ultrakill)"]}}
                 """
+        self.chat_model.generate(systemPrompt)
 
-                chat.generate(systemPrompt)
-                response = chat.generate(prompt)
-                
-                self.model.close()
-
-                return response
+    def handleInstructions(self, prompt: str) -> str:
+        response = self.chat_model.generate(prompt)
+        return response
