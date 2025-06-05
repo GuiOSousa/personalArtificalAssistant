@@ -40,5 +40,10 @@ class VoiceHandler:
             except sr.RequestError as e:
                 print(f"Erro na solicitação: {e}")
     
+    def inputCommand(self):
+        text = input("Digite o comando: ")
+        self.handleCommand(text)
+        self.inputCommand()
+
     def handleCommand(self, text: str):
         self.interpreter.handleInstruction(text)
