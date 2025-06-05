@@ -1,5 +1,7 @@
 import subprocess
+
 from src.modules.lightSystem import LightSystem
+from src.modules.spotify import Spotify
 
 class CommandExecuter:
     def __init__(self):
@@ -28,3 +30,11 @@ class CommandExecuter:
     def turnOffLight(self):
         l = LightSystem()
         l.turnOffLight()
+    
+    def playSong(self, songTitle: str):
+        s = Spotify()
+        s.playSong(songTitle)
+    
+    def addSongToQueue(self, songTitle: str):
+        s = Spotify()
+        s.addSongToQueue(songTitle)
