@@ -15,7 +15,9 @@ class CommandHandler:
         "turnOnLight",
         "turnOffLight",
         {"playSong": {"songTitle": "DYNAMIC"}},
-        {"addSongToQueue": {"songTitle": "DYNAMIC"}}
+        {"addSongToQueue": {"songTitle": "DYNAMIC"}},
+        "captureAndSaveImage",
+        {"captureAndDescribeImage": {"prompt": "DYNAMIC"}},
         ]
         return commandList
 
@@ -31,6 +33,8 @@ class CommandHandler:
                 self.commandExecuter.turnOnLight()
             case "turnOffLight":
                 self.commandExecuter.turnOffLight()
+            case "captureAndSaveImage":
+                self.commandExecuter.captureAndSaveImage()
         
         if commandTitle.find("openGame") != -1:
             args = commandTitle.split("(")[1]
@@ -43,6 +47,9 @@ class CommandHandler:
         
         elif self.isCommand(commandTitle, "addSongToQueue"):
             self.commandExecuter.addSongToQueue(self.getCommandArgs(commandTitle))
+        
+        elif self.isCommand(commandTitle, "captureAndDescribeImage"):
+            self.commandExecuter.captureAndDescribeImage(self.getCommandArgs(commandTitle))
 
     def isCommand(self, string: str, target: str):
         return string.find(target) != -1

@@ -44,6 +44,14 @@ class LanguageModel():
                 Exemplo 4 - função com parâmetro DYNAMICS
                 E: Tocar November Rain
                 S: {{"Response": "November Rain está tocando!", "Commands": ["playSong(November Rain)"]}}
+
+                Exemplo 5 - Descrição de imagens
+                E: Capture uma imagem da webcam e me descreva
+                S: {{"Response": "A imagem será descrita!", "Commands": ["captureAndDescribeImage(descreva a imagem)"]}}
+
+                Exemplo 6 - Descrição de imagens (pedido de forma subjetiva)
+                E: Qual a cor da minha camiseta?
+                S: {{"Response": "A imagem será descrita!", "Commands": ["captureAndDescribeImage(qual a cor da caimseta)"]}}
                 """
         self.chat_model.generate(systemPrompt)
 
