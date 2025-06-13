@@ -69,6 +69,8 @@ Lâmpadas requerem configurção adicional. Neste projeto, uma lâmpada RGB comp
 
 A Intergração com Spotify exige uma conta Premium e credenciais válidas de API.
 
+A Integração com o Google AI Studio (descrição de imagens capturadas) exige uma API Key válida.
+
 ## 7 - Lista de Comandos
 - openNotepad() - Abre o bloco de notas
 - openGoogleChrome() - Abre o Google
@@ -77,6 +79,9 @@ A Intergração com Spotify exige uma conta Premium e credenciais válidas de AP
 - turnOffLight() - Desliga a lâmpada configurada
 - playSong(songTitle) - Toca a música passada no Spotify
 - addSongToQueue(songTitle) - Adiciona a música passada na fila do Spotify
+- captureAndSaveImage() - Captura uma imagem da WebCam e salva na pasta "savedFiles"
+- captureAndDescribeImage() - Captura uma imagem da WebCam e descreve-a baseando-se no prompt mandado. (Esta funcionalidade ainda está sendo testada)
+
 
 ## 8 - Versões
 ### v0.1.0 (23/05/2025)
@@ -96,3 +101,8 @@ A Intergração com Spotify exige uma conta Premium e credenciais válidas de AP
 - Introdução de comandos com argumentos dinâmicos.
 - Contexto Ativo: O programa aceita várias entradas em sequência sem precisar ser reiniciado.
 - Integração com Spotify
+
+### v0.2.1 (13/06/2025)
+- Novos comandos (2)
+- Captura de imagens
+- Integração com Google AI Studio para descrição de imagens.

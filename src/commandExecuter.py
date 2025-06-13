@@ -2,6 +2,7 @@ import subprocess
 
 from src.modules.lightSystem import LightSystem
 from src.modules.spotify import Spotify
+from src.modules.imageSystem import ImageSystem
 
 class CommandExecuter:
     def __init__(self):
@@ -38,3 +39,11 @@ class CommandExecuter:
     def addSongToQueue(self, songTitle: str):
         s = Spotify()
         s.addSongToQueue(songTitle)
+    
+    def captureAndSaveImage(self):
+        i = ImageSystem()
+        i.captureAndSave()
+    
+    def captureAndDescribeImage(self, prompt):
+        i = ImageSystem()
+        i.captureAndDescribe(prompt)
