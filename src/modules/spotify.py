@@ -56,3 +56,11 @@ class Spotify():
         songURI = self.getSongURI(songTitle)
 
         sp.add_to_queue(songURI)
+    
+    def pauseSong(self):
+        sp = self.getAuth('user-modify-playback-state')
+        sp.pause_playback()
+    
+    def resumeSong(self):
+        sp = self.getAuth('user-modify-playback-state')
+        sp.start_playback()
