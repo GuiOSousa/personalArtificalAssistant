@@ -16,6 +16,8 @@ class CommandHandler:
         "turnOffLight",
         {"playSong": {"songTitle": "DYNAMIC"}},
         {"addSongToQueue": {"songTitle": "DYNAMIC"}},
+        "pauseSong",
+        "resumeSong",
         "captureAndSaveImage",
         {"captureAndDescribeImage": {"prompt": "DYNAMIC"}},
         ]
@@ -33,8 +35,13 @@ class CommandHandler:
                 self.commandExecuter.turnOnLight()
             case "turnOffLight":
                 self.commandExecuter.turnOffLight()
+            case "pauseSong":
+                self.commandExecuter.pauseSong()
+            case "resumeSong":
+                self.commandExecuter.resumeSong()
             case "captureAndSaveImage":
                 self.commandExecuter.captureAndSaveImage()
+            
         
         if commandTitle.find("openGame") != -1:
             args = commandTitle.split("(")[1]

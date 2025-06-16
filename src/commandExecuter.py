@@ -40,6 +40,14 @@ class CommandExecuter:
         s = Spotify()
         s.addSongToQueue(songTitle)
     
+    def pauseSong(self):
+        s = Spotify()
+        s.pauseSong()
+    
+    def resumeSong(self):
+        s = Spotify()
+        s.resumeSong()
+    
     def captureAndSaveImage(self):
         i = ImageSystem()
         i.captureAndSave()
