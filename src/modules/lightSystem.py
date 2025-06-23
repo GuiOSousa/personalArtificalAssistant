@@ -14,9 +14,15 @@ class LightSystem:
                 return device
 
     def turnOnLight(self):
-        device = self.getDevice("BedroomLampshade")
-        device.turn_on()
+        try:
+            device = self.getDevice("BedroomLampshade")
+            device.turn_on()
+        except:
+            print("Ocorreu um erro.")
 
     def turnOffLight(self):
-        device = self.getDevice("BedroomLampshade")
-        device.turn_off()
+        try:
+            device = self.getDevice("BedroomLampshade")
+            device.turn_off()
+        except:
+            print("Ocorreu um erro.")
