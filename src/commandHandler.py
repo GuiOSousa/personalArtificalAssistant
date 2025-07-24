@@ -1,4 +1,5 @@
 from src.commandExecuter import CommandExecuter 
+from src.console.console import console
 
 class CommandHandler:
     commandExecuter = CommandExecuter()
@@ -14,6 +15,7 @@ class CommandHandler:
         {"openGame": {"game": ["ultrakill", "subnautica"]}},
         "turnOnLight",
         "turnOffLight",
+        {"switchLightColor": {"color": ["red", "green", "blue"]}},
         {"playSong": {"songTitle": "DYNAMIC"}},
         {"addSongToQueue": {"songTitle": "DYNAMIC"}},
         "pauseSong",
@@ -58,6 +60,9 @@ class CommandHandler:
         elif self.isCommand(commandTitle, "captureAndDescribeImage"):
             self.commandExecuter.captureAndDescribeImage(self.getCommandArgs(commandTitle))
 
+        elif self.isCommand(commandTitle, "switchLightColor"):
+            self.commandExecuter.switchLightColor(self.getCommandArgs(commandTitle))
+
     def isCommand(self, string: str, target: str):
         return string.find(target) != -1
 
@@ -68,4 +73,8 @@ class CommandHandler:
 
     def executeStack(self, commands: list):
         for command in commands:
-            self.execute(command)
+            console.sendMessage(command, "cyan")
+            try:
+                self.execute(command)
+            except Exception as e:
+                console.sendMessage(e, "red")

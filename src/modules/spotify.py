@@ -40,10 +40,12 @@ class Spotify():
 
     def getSavedSongs(self):
         sp = self.getAuth('user-library-read')
+        savedSongs = []
         results = sp.current_user_saved_tracks()
-        for idx, item in enumerate(results['items']):
+        for item in enumerate(results['items']):
             track = item['track']
-            print(f"{idx + 1}. {track['name']} - {track['artists'][0]['name']}")
+            savedSongs.append(track)
+        return savedSongs
     
     def playSong(self, songTitle: str):
         sp = self.getAuth('user-read-playback-state user-modify-playback-state')

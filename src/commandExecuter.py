@@ -32,6 +32,10 @@ class CommandExecuter:
         l = LightSystem()
         l.turnOffLight()
     
+    def switchLightColor(self, color: str):
+        l = LightSystem()
+        l.switchLightColor(color)
+
     def playSong(self, songTitle: str):
         s = Spotify()
         s.playSong(songTitle)

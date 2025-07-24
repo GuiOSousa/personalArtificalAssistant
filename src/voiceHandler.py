@@ -33,12 +33,12 @@ class VoiceHandler:
                 print(f"{text}")
                 print("Aguarde...")
                 self.handleCommand(text)
-
             except sr.UnknownValueError:
                 print("Não entendi o que você disse.")
-                self.captureAudio()
             except sr.RequestError as e:
                 print(f"Erro na solicitação: {e}")
+            
+            self.captureAudio()
     
     def inputCommand(self):
         text = input("Digite o comando: ")
