@@ -1,8 +1,8 @@
 import json
 from src.languageModel import LanguageModel
 from src.commandHandler import CommandHandler
-
-
+from src.console.console import console
+from src.voiceOutput import voiceOutput
 
 class VoiceCommandInterpreter:
     model: LanguageModel = LanguageModel()
@@ -13,17 +13,28 @@ class VoiceCommandInterpreter:
 
     def handleInstruction(self, instruction: str):
         with self.model:
+            console.sendMessage(f"Instruction: {instruction}")
             response = self.model.handleInstructions(instruction)
             dt = self.getResponseAsDict(response)
+            
+            res = dt["Response"]
+            com = dt["Commands"]
 
-            print(dt["Response"])
-            self.commandHandler.executeStack(dt["Commands"])
+            voiceOutput.say(res)
+            console.sendMessage(f"Response: {res}")
+            console.sendMessage(f"Commands: {com}")
+            self.commandHandler.executeStack(com)
     
     def getResponseAsDict(self, response: str) -> dict:
-        treatedResponse = response.split("{")[1]
-        treatedResponse = treatedResponse.split("}")[0]
-        treatedResponse = "{" + treatedResponse + "}"
+        try:
+            treatedResponse = response.split("{")[1]
+            treatedResponse = treatedResponse.split("}")[0]
+            treatedResponse = "{" + treatedResponse + "}"
 
-        dt = json.loads(treatedResponse)
+            dt = json.loads(treatedResponse)
 
-        return dt
+            return dt
+
+        except:
+            console.sendMessage(f'Ocorreu um erro ao lidar com a requisição "{response}".', "red")
+            return {"Response": "", "Commands": []}

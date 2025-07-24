@@ -26,3 +26,18 @@ class LightSystem:
             device.turn_off()
         except:
             print("Ocorreu um erro.")
+    
+        
+    def switchLightColor(self, color: str):
+        device = self.getDevice("BedroomLampshade")
+        print(color)
+        try:
+            match color:
+                case "red":
+                    device.set_colour(255, 0, 0)
+                case "green":
+                    device.set_colour(0, 255, 0)
+                case "blue":
+                    device.set_colour(0, 0, 255)
+        except:
+            print("Ocorreu um erro.")
